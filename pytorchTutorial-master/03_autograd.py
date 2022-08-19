@@ -4,6 +4,7 @@ import torch
 # for all operations on Tensors
 
 # requires_grad = True -> tracks all operations on the tensor. 
+#随机创建一个tensor，并且设可以求导
 x = torch.randn(3, requires_grad=True)
 y = x + 2
 
@@ -29,6 +30,7 @@ print(x.grad) # dz/dx
 
 # Generally speaking, torch.autograd is an engine for computing vector-Jacobian product
 # It computes partial derivates while applying the chain rule
+#chain rule(),可以想到复合函数：f(z(y(x))求导，等于求x（leaf variable）
 
 # -------------
 # Model with non-scalar output:
@@ -44,8 +46,9 @@ for _ in range(10):
 
 print(y)
 print(y.shape)
-
+#设置float类型，不然会报错
 v = torch.tensor([0.1, 1.0, 0.0001], dtype=torch.float32)
+#这里的v，代表着backward的第一个参数gradient，他的大小要跟x一样大，不然会报错，他就像weight的存在
 y.backward(v)
 print(x.grad)
 
@@ -53,6 +56,7 @@ print(x.grad)
 # Stop a tensor from tracking history:
 # For example during our training loop when we want to update our weights
 # then this update operation should not be part of the gradient computation
+#这三个是阻止求导的
 # - x.requires_grad_(False)
 # - x.detach()
 # - wrap in 'with torch.no_grad():'
