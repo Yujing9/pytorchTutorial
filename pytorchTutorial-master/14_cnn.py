@@ -13,7 +13,7 @@ device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 num_epochs = 5
 batch_size = 4
 learning_rate = 0.001
-
+#test
 # dataset has PILImage images of range [0, 1]. 
 # We transform them to Tensors of normalized range [-1, 1]
 transform = transforms.Compose(
