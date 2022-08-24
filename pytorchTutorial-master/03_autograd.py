@@ -41,6 +41,7 @@ print(x.grad) # dz/dx
 x = torch.randn(3, requires_grad=True)
 
 y = x * 2
+# _ likes 'i'
 for _ in range(10):
     y = y * 2
 
