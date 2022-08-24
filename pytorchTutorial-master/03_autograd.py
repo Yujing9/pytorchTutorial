@@ -4,7 +4,7 @@ import torch
 # for all operations on Tensors
 
 # requires_grad = True -> tracks all operations on the tensor. 
-#随机创建一个tensor，并且设可以求导
+# 随机创建一个tensor，并且设可以求导
 x = torch.randn(3, requires_grad=True)
 y = x + 2
 
